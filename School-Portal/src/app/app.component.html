@@ -1,7 +1,8 @@
-@if (loggedIn) {
+@if (isLoggedIn) {
     <main>
         Hi! You are logged in as {{name}}
     </main>
-} else {
-    <app-login #login></app-login>
+}
+@else {
+    <app-login></app-login>
 }

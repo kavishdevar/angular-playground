@@ -1,5 +1,6 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <p>
+<div class="container mat-typography">
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
             <mat-label>Roll Number</mat-label>
             <input matInput formControlName="rollNumber">
@@ -9,7 +10,15 @@
             <mat-label>Password</mat-label>
             <input matInput formControlName="password" type="password">
         </mat-form-field>
-
-        <button mat-raised-button color="primary" type="submit">Login</button>
-    </p>
-</form>
+        <br>
+        <!-- error if supplied -->
+        @if (loginForm.hasError('invalid'))
+        {
+            <mat-error>
+                Credentials incorrect.
+            </mat-error>
+        }
+        <br>
+        <button mat-flat-button color="primary" type="submit">Login</button>
+    </form>
+</div>

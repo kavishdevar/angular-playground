@@ -14,7 +14,7 @@ import { LoginComponent } from './login.component';
 })
 export class AppComponent {
   title = 'School Portal';
-  isLoggedin = localStorage.getItem('isLoggedin');
+  isLoggedIn = localStorage.getItem('isLoggedin');
   name = localStorage.getItem('name');
   loginForm = new FormGroup({
     rollNumber: new FormControl(''),
