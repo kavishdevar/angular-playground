@@ -43,6 +43,13 @@ export class LoginComponent {
                 localStorage.setItem('accessToken', json.accessToken);
                 localStorage.setItem('organizationID', json.organizationId);
             }
-        ));
+        ).catch(e =>
+            {
+                console.log(e)
+                this.loginForm.reset();
+                this.loginForm.setErrors({invalid: true});
+            }
+        )
+    );
     }
 }
