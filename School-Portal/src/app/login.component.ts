@@ -46,7 +46,8 @@ export class LoginComponent {
                 localStorage.setItem('name', json.name);
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('accessToken', json.accessToken);
-                localStorage.setItem('organizationID', json.organizationId);
+                localStorage.setItem('userID', json.userId);
+
                 document.location.href = '/';
             }
         ).catch(e =>

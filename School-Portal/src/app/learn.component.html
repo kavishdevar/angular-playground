@@ -1,5 +1,41 @@
-<script>
-    fetch("https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/0d3932e3-33d3-4108-9f3c-a49ff8476dc8/domains/e_3/folder/f5ad665a-51a0-4481-b2f1-f98b97382369", {
-    "token": "563090d6-8798-4a34-9302-22224f301cfb"
-    });
-</script>
+<div id="learn-container">
+    {{practiceSubjects | json}}
+    {{folders | json}}
+    {{categories | json}}
+    <mat-accordion>
+        <!-- interface response {
+            collectionType: string,
+            collectionId: string,
+            nodeId: string,
+            nodeName: string,
+            nodeUrl: string,
+            nodeType: string,
+            order: number,
+            nodeImage: string,
+            showImage: string,
+            skillLevel: number
+          }
+          json = json as response[];
+          let practiceSubjects = json.filter((node: { nodeType: string; }) => node.nodeType == "SUBJECT");
+          let folders = json.filter((node: { nodeType: string; }) => node.nodeType == "FOLDER");
+          let categories = json.filter((node: { nodeType: string; }) => node.nodeType == "CATEGORY");
+          return { practiceSubjects, folders, categories } -->
+        <mat-expansion-panel *ngFor="let subject of practiceSubjects">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="subject-title">
+                        <img src="{{subject.nodeImage}}" alt="subject-image" class="subject-image">
+                        <span>{{subject.nodeName}}</span>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a mat-list-item *ngFor="let folder of folders" [routerLink]="['/learn', folder.collectionId]">
+                    <mat-icon mat-list-icon>folder</mat-icon>
+                    <h3 mat-line>{{folder.nodeName}}</h3>
+                </a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+</div>
