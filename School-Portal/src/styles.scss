@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-
+@import '@angular/material/prebuilt-themes/cyan-orange.css';
 $theme: mat.define-theme((color: (theme-type: light,
-        primary: mat.$green-palette,
-      )));
+  primary: mat.$orange-palette,
+)));
 html,
 body {
   height: 100%;
@@ -11,8 +11,11 @@ body {
   color: var(--mat-app-text-color);
   @include mat.all-component-themes($theme);
   font-family: Roboto, sans-serif;
+  overflow: auto;
 }
 
 body {
-  margin: 8px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }

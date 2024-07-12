@@ -18,6 +18,11 @@ export class LoginComponent {
         rollNumber: new FormControl(''),
         password: new FormControl(''),
     });
+    constructor() {
+        if (localStorage.getItem('isLoggedIn') == 'true' && localStorage.getItem('accessToken') != null && localStorage.getItem('accessToken') != ''){
+            document.location.href = '/';
+        }
+    }
     onSubmit() {
         interface LoginResponse {
             deviceId: string;

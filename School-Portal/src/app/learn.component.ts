@@ -5,4 +5,7 @@ import { Component } from "@angular/core";
   templateUrl: "./learn.component.html",
 //   styleUrls: ["./learn.component.scss"],
 })
-export class LearnComponent {}
+export class LearnComponent {
+  isLoggedIn = localStorage.getItem("isLoggedIn");
+  accessToken = localStorage.getItem("accessToken");
+}
