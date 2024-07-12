@@ -1,9 +1,5 @@
 <div id="learn-container">
-    {{practiceSubjects | json}}
-    {{folders | json}}
-    {{categories | json}}
-    <mat-accordion>
-        <!-- interface response {
+     <!-- interface response {
             collectionType: string,
             collectionId: string,
             nodeId: string,
@@ -20,22 +16,51 @@
           let folders = json.filter((node: { nodeType: string; }) => node.nodeType == "FOLDER");
           let categories = json.filter((node: { nodeType: string; }) => node.nodeType == "CATEGORY");
           return { practiceSubjects, folders, categories } -->
+        Practice!
+        <mat-accordion>
         <mat-expansion-panel *ngFor="let subject of practiceSubjects">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <div class="subject-title">
-                        <img src="{{subject.nodeImage}}" alt="subject-image" class="subject-image">
                         <span>{{subject.nodeName}}</span>
                     </div>
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <mat-nav-list>
-                <a mat-list-item *ngFor="let folder of folders" [routerLink]="['/learn', folder.collectionId]">
-                    <mat-icon mat-list-icon>folder</mat-icon>
-                    <h3 mat-line>{{folder.nodeName}}</h3>
-                </a>
+                Under development...
             </mat-nav-list>
         </mat-expansion-panel>
+    </mat-accordion>
+    Folders
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let folder of folders">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="folder-title">
+                        <span>{{folder.nodeName}}</span>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                Under development...
+            </mat-nav-list>
+        </mat-expansion-panel>
+    </mat-accordion>
 
+        Other Categories
+    <mat-accordion>
+
+        <mat-expansion-panel *ngFor="let category of categories">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <div class="category-title">
+                        <span>{{category.nodeName}}</span>
+                    </div>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                Under development...
+            </mat-nav-list>
+        </mat-expansion-panel>
     </mat-accordion>
 </div>

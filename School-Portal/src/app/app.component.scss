@@ -18,3 +18,7 @@ mat-toolbar {
 .mat-drawer-backdrop {
     position: fixed;
 }
+
+router-outlet {
+    padding: 20px;
+}

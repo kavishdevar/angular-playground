@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule } from "@angular/material/expansion";
@@ -8,11 +9,14 @@ import { RouterModule } from "@angular/router";
 @Component({
   selector: "app-learn",
   templateUrl: "./learn.component.html",
-  imports: [MatExpansionModule, MatButtonModule, MatListModule, MatIconModule, RouterModule],
+  imports: [MatExpansionModule, MatButtonModule, MatListModule, MatIconModule, RouterModule, CommonModule],
   standalone: true,
-  //   styleUrls: ["./learn.component.scss"],
+  styleUrl: "./learn.component.scss",
 })
 export class LearnComponent {
+  practiceSubjects: any;
+  folders: any;
+  categories: any;
   constructor() {
     let isLoggedIn = localStorage.getItem("isLoggedIn");
     let accessToken = localStorage.getItem("accessToken") as String;
@@ -115,24 +119,111 @@ export class LearnComponent {
         ]
       */
 
-        interface response {
-          collectionType: string,
-          collectionId: string,
-          nodeId: string,
-          nodeName: string,
-          nodeUrl: string,
-          nodeType: string,
-          order: number,
-          nodeImage: string,
-          showImage: string,
-          skillLevel: number
-        }
-        json = json as response[];
-        let practiceSubjects = json.filter((node: { nodeType: string; }) => node.nodeType == "SUBJECT");
-        let folders = json.filter((node: { nodeType: string; }) => node.nodeType == "FOLDER");
-        let categories = json.filter((node: { nodeType: string; }) => node.nodeType == "CATEGORY");
-        return { practiceSubjects, folders, categories }
+      interface response {
+        collectionType: string,
+        collectionId: string,
+        nodeId: string,
+        nodeName: string,
+        nodeUrl: string,
+        nodeType: string,
+        order: number,
+        nodeImage: string,
+        showImage: string,
+        skillLevel: number
       }
+      json = json as response[];
+      this.practiceSubjects = json.filter((node: { nodeType: string; }) => node.nodeType == "SUBJECT");
+      this.folders = json.filter((node: { nodeType: string; }) => node.nodeType == "FOLDER");
+      this.categories = json.filter((node: { nodeType: string; }) => node.nodeType == "CATEGORY");
+      for (let i = 0; i < this.folders.length; i++) {
+        fetch(`https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/${userID}/domains/e_3/folder/${this.folders[i].nodeId}`, {
+          "headers": {
+            "token": accessToken.toString(),
+            "userid": userID.toString()
+          }
+        }).then(resp => resp.json().then(json => {
+          interface response {
+            isLocked: boolean,
+            isRead: boolean,
+            contentId: string,
+            contentType: string,
+            nodeId: string,
+            nodeName: string,
+            nodeType: string,
+            order: number
+          }
+          json = json as response[];
+          for (let i = 0; i < json.length; i++) {
+            fetch(`https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/${userID}/domains/e_3/folder/${json[i].contentId}`, {
+              "headers": {
+                "token": accessToken.toString(),
+                "userid": userID.toString()
+              }
+            }).then(resp => resp.json().then(subjects => {
+              subjects = subjects as response[];
+              for (let j = 0; j < 1; j++) {
+                fetch(`https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/${userID}/domains/e_3/folder/${subjects[j].contentId}`, {
+                  "headers": {
+                    "token": accessToken.toString(),
+                    "userid": userID.toString()
+                  }
+                }).then(resp => resp.json().then(chapters => {
+                  chapters = chapters as response[];
+                  for (let k = 0; k < 1; k++) {
+                    fetch(`https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/${userID}/domains/e_3/folder/${chapters[k].ncontentIdodeId}`, {
+                      "headers": {
+                        "token": accessToken.toString(),
+                        "userid": userID.toString()
+                      }
+                    }).then(resp => resp.json().then(bookType => {
+                      bookType = bookType as response[];
+                      for (let l = 0; l < bookType.length; l++) {
+                        console.log("https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/0d3932e3-33d3-4108-9f3c-a49ff8476dc8/domains/e_3/folder/4adf1b1d-f087-4f08-828f-579ac29dcf00")
+                        console.log(`https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/${userID}/domains/e_3/folder/${bookType[l].contentId}`)
+                        fetch(`https://api-v2-6-0.eapp.vidyamandir.com/mysa/practice/organization/1/users/${userID}/domains/e_3/folder/${bookType[l].contentId}`, {
+                          "headers": {
+                            "token": accessToken.toString(),
+                            "userid": userID.toString()
+                          }
+                        }).then(resp => resp.json().then(pdfs => {
+                          interface pdfs {
+                            isLocked: boolean,
+                            isRead: boolean,
+                            contentId: string,
+                            nodeContentId: string,
+                            contentType: string,
+                            order: number,
+                            name: string,
+                            pdf?: {
+                              name: string,
+                              description: string,
+                              order: number,
+                              s3PdfId: string,
+                              pdfUrl: string,
+                              batchIds: string[],
+                              isPublic: string,
+                              allowStudentsToDownload: boolean,
+                              isPublished: string
+                            }
+                          }
+                          pdfs = pdfs as pdfs[];
+                          // store pdfs into book type into chapters into subjects into folders
+                          if (this.folders[i] && this.folders[i].subjects[j] && this.folders[i].subjects[j].chapters[k] && this.folders[i].subjects[j].chapters[k].bookType[l]) {
+                            this.folders[i].subjects[j].chapters[k].bookType[l].pdfs = pdfs;
+                          }
+                        }));
+                      }
+                    }));
+                  }
+                }));
+              }
+            }
+            ));
+          }
+        }));
+      }
+    }
     ));
+    console.log(this.folders);
   }
 }
