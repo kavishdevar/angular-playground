@@ -1,7 +1,26 @@
-@if (isLoggedIn) {
-    <main>
-        Hi! You are logged in as {{name}}
-    </main>
+@if (isLoggedIn == 'true') {
+    <mat-drawer-container class="drawer-container" autosize>
+        <mat-drawer #drawer class="drawer" mode="side">
+          <p>Auto-resizing sidenav</p>
+        </mat-drawer>
+    
+        <mat-toolbar>
+            <button mat-icon-button (click)="drawer.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+            <span>{{title}}</span>
+            <span class="spacer"></span>
+            <button mat-icon-button>
+              <mat-icon>favorite</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon>share</mat-icon>
+            </button>
+        </mat-toolbar>
+        <main>
+            Hi! You are logged in as {{name}}
+        </main>
+      </mat-drawer-container>   
 }
 @else {
     <app-login></app-login>

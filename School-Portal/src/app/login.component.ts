@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
-import { MatFormField, MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     selector: 'app-login',
     styleUrls: ['./login.component.scss'],
     standalone: true,
-    imports: [RouterOutlet, MatButtonModule, MatInputModule, ReactiveFormsModule],
+    imports: [RouterOutlet, MatButtonModule, MatInputModule, ReactiveFormsModule, MatFormFieldModule],
     templateUrl: './login.component.html',
 })
 export class LoginComponent {
@@ -42,6 +42,7 @@ export class LoginComponent {
                 localStorage.setItem('isLoggedIn', 'true');
                 localStorage.setItem('accessToken', json.accessToken);
                 localStorage.setItem('organizationID', json.organizationId);
+                document.location.href = '/';
             }
         ).catch(e =>
             {
