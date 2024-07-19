@@ -1,10 +1,6 @@
-h1,
-h3 {
+h1{
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     text-align: center;
-}
-
-h1 {
     font-size: 2.5em;
 }
 
@@ -30,15 +26,15 @@ h1 {
 }
 
 .bits-grid {
-    background-color: rgb(50 50 50);
+    background-color: rgb(23 23 23);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    grid-gap: 4px;
+    grid-gap: 8px;
     padding: 16px;
     margin: 10px;
     border-radius: 16px;
-    box-shadow: 0 0 10px #222222;
+    box-shadow: inset 5px 7px 18px 7px #6d6d6d;
     width: fit-content;
     height: auto;
 }
@@ -46,8 +42,7 @@ h1 {
 .bit {
     width: 64px;
     height: 64px;
-    background-color: rgb(105, 105, 105);
-    border: 1px solid black;
+    background-color: rgb(42 42 42);
     border-radius: 6px;
     transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
     position: relative;
@@ -58,8 +53,6 @@ h1 {
         margin-top: 10px;
         position: absolute;
     }
-
-    ;
 
     input {
         height: 62px;
@@ -97,15 +90,15 @@ h1 {
 }
 
 .parity {
-    background-color: rgb(191 191 191);
-    color: rgb(26 26 26);
-    border: 1px solid black;
+    background-color: rgb(91 91 91);
+    color: rgb(255 255 255);
     border-radius: 6px;
 
     input {
-        color: rgb(26 26 26);
+        color: rgb(255, 255, 255);
     }
 }
+
 
 button {
     background-color: #222222;
@@ -117,6 +110,14 @@ button {
     font-size: 16px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     cursor: pointer;
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #333333;
+    border-radius: 16px;
+    transform: scale(1.025);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
 }
 
 .flex {
@@ -166,4 +167,84 @@ button {
     display: block;
     margin: auto;
     max-width: 800px;
+}
+
+#span1:hover {
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.05);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span2:hover {
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.05);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span4:hover {
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.05);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span8:hover {
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.05);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span0:hover {
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.05);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span1:hover ~ .parity1{
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.05);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span2:hover ~ .parity2{
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.025);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span4:hover ~ .parity4{
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.025);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span8:hover ~ .parity8{
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.025);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
+
+#span0:hover ~ .bit{
+    background-color: rgb(23, 23, 23);
+    border-radius: 12px;
+    box-shadow: inset #b3b3b3 0 0 6px 0px;
+    transform: scale(1.025);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
 }
