@@ -1,0 +1,43 @@
+.bits-grid {
+    background-color: rgb(50 50 50);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 4px;
+    padding: 16px;
+    margin: 10px;
+    border-radius: 16px;
+    /* border: 1px solid black; */
+    box-shadow: 0 0 10px #222222;
+    width: fit-content;
+    height: auto;
+}
+
+.bit {
+    width: 64px;
+    height: 64px;
+    background-color: rgb(105, 105, 105);
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+    border-radius: 6px;
+    /* box-shadow: 0 0 5px black; */
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+    .bit-value {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 10px;
+    };
+    .bit-number {
+        font-size: 16px;
+        text-align: left;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+}
+
+.bit:hover {
+    background-color: rgb(69, 69, 69);
+    border-radius: 12px;
+    transform: scale(1.1);
+    transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
+}
