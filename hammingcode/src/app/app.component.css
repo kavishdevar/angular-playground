@@ -1,5 +1,4 @@
 h1 {
-    color: #ffffff;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 2.5em;
     text-align: center;
@@ -7,7 +6,6 @@ h1 {
 }
 
 .footnote {
-    color: #ffffff;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 1em;
     text-align: center;
@@ -36,17 +34,12 @@ h1 {
     box-shadow: 0 0 10px #222222;
     width: fit-content;
     height: auto;
-    /* position: absolute; */
-    /* top: 50%; */
-    /* left: 50%; */
-    /* transform: translate(-50%, -50%); */
 }
 
 .bit {
     width: 64px;
     height: 64px;
     background-color: rgb(105, 105, 105);
-    color: rgb(255, 255, 255);
     border: 1px solid black;
     border-radius: 6px;
     transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
@@ -106,7 +99,40 @@ button {
     cursor: pointer;
 }
 
-.buttons {
+.flex {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 100%;
+}
+
+.button-label {
+    display: inline-block;
+    margin-inline-start: 8px;
+    vertical-align: middle;
+}
+.button-icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.flex-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+#generate-button {
+    width: 100%;
+}
+
+:host {
+    color: #ffffff;
 }

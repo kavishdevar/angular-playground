@@ -69,6 +69,9 @@
       <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value15">
     </span>
   </div>
+</div>
+
+<div class="flex">
   <p>
     The actual data bits:
     <span id="databits"></span>
@@ -77,21 +80,36 @@
     The parity bits:
     <span id="paritybits"></span>
   </p>
-  <br>
 </div>
-<button class="generate-button">
-  <label>Generate!</label>
-</button>
-<div class="buttons">
-  <button>
-    <mat-icon>restart_alt</mat-icon>
-  </button>
-  <button>
-    <label>Check</label>
-  </button>
 
+<div class="flex">
+  <button id="generate-button">
+    <mat-icon class="button-icon">autorenew</mat-icon>
+    <label class="button-label">Generate</label>
+  </button>
+  <div class="flex-break"></div>
+  <span id="steps">
+    <h2>Steps to store 10 bits with partiy:</h2>
+    <ol>
+      <li>Store the data in the bits whose position is not a power of 2 (i.e. bits 3, 5, 6, 7, 9, 10, 11, 12, 13, 14).</li>
+      <li>Calculate the parity bits for the positions 1, 2, 4, and 8</li>
+      <li>Store the parity bits in the positions 1, 2, 4, and 8.</li>
+    </ol>
+  </span>
+  <div class="flex-break"></div>
+  <div class="button-grid">
+    <button>
+      <mat-icon class="button-icon">check</mat-icon>
+      <label class="button-label">Check</label>
+    </button>
+    <button>
+      <mat-icon class="button-icon">restart_alt</mat-icon>
+      <label class="button-label">Reset</label>
+    </button>
+  </div>
 </div>
 
 <p class="footnote">
-  Made by Kavish by the help of <a href="https://www.youtube.com/watch?v=X8jsijhllIA">this amazing video</a> by 3Blue1Brown.
+  Made by Kavish by the help of <a href="https://www.youtube.com/watch?v=X8jsijhllIA">this amazing video</a> by
+  3Blue1Brown.
 </p>
