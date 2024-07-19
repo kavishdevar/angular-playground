@@ -22,9 +22,10 @@ export class AppComponent {
   }
 
   generateParityBits(): void {
-    console.log('generateParityBits');
     (document.getElementById('check-verdict') as HTMLElement).style.display = 'none';
-
+    document.querySelectorAll('.bit:not(.parity)').forEach((bit) => {
+      (bit as HTMLSpanElement).style.backgroundColor = '#2a2a2a';
+    });
     // input data in input fields with ids value1, value3, value5...7, value9...15
     let parityBits = [];
 
@@ -68,6 +69,11 @@ export class AppComponent {
   }
 
   checkData(): void {
+
+    document.querySelectorAll('.bit:not(.parity)').forEach((bit) => {
+      (bit as HTMLSpanElement).style.backgroundColor = '#2a2a2a';
+    });
+    
     let getValue = this.getValue;
     let currentParityBits = [];
     let error = false;
@@ -84,16 +90,16 @@ export class AppComponent {
     currentParityBits[1] = (getValue(2) + getValue(3) + getValue(6) + getValue(7) + getValue(10) + getValue(11) + getValue(14) + getValue(15)) % 2;
     currentParityBits[2] = (getValue(4) + getValue(5) + getValue(6) + getValue(7) + getValue(12) + getValue(13) + getValue(14) + getValue(15)) % 2;
     currentParityBits[3] = (getValue(8) + getValue(9) + getValue(10) + getValue(11) + getValue(12) + getValue(13) + getValue(14) + getValue(15)) % 2;
-    finalParity = (getValue(0) + getValue(1) + getValue(2) + getValue(3) + getValue(4) + getValue(5) + getValue(6) + getValue(7) + getValue(8) + getValue(9) + getValue(10) + getValue(11) + getValue(12) + getValue(13) + getValue(14) + getValue(15)) % 2;
+    // finalParity = (getValue(0) + getValue(1) + getValue(2) + getValue(3) + getValue(4) + getValue(5) + getValue(6) + getValue(7) + getValue(8) + getValue(9) + getValue(10) + getValue(11) + getValue(12) + getValue(13) + getValue(14) + getValue(15)) % 2;
     let errorInParities = [];
 
-    if (finalParity != 0) {
-      error = true;
-      errorInParities.push(0);
-    }
-    else {
-      errorInParities.push(1);
-    }
+    // if (finalParity != 0) {
+    //   error = true;
+    //   errorInParities.push(0);
+    // }
+    // else {
+    //   errorInParities.push(1);
+    // }
 
     for (let i = 0; i < 4; i++) {
       if (currentParityBits[i] != 0) {
@@ -108,9 +114,10 @@ export class AppComponent {
     // assuming only 1 error, find the error bit by comparing the original parity bits with the current parity bits
     function binaryToDecimal(binary: number[]): number {
       let decimal = 0;
-      let bR = binary.reverse();
+      // let bR = binary.reverse();
+      console.log(binary);
       for (let i = 0; i < binary.length; i++) {
-        decimal += bR[i] * 2 ** i;
+        decimal += binary[i] * 2 ** i;
       }
       return decimal;
     }
@@ -148,7 +155,7 @@ export class AppComponent {
             else if (this.value.length > 1 && this.value.endsWith('1')) {
               this.value = "1"
             }
-            input.parentElement!.style.backgroundColor = '#696969';
+            input.parentElement!.style.backgroundColor = '#2a2a2a';
             prevVal = this.value;
           } else {
             this.value = prevVal;
