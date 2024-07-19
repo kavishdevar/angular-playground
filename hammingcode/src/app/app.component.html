@@ -1,66 +1,97 @@
-<div class="bits-grid">
-    <span class="bit">
+<h1>
+  Hamming Code Visualizer
+</h1>
+
+<div class="grid-container">
+  <div class="bits-grid">
+    <span class="bit parity">
       <p class="bit-number">0</p>
       <p class="bit-value" id="value0"></p>
     </span>
-    <span class="bit">
+    <span class="bit parity">
       <p class="bit-number">1</p>
       <p class="bit-value" id="value1"></p>
     </span>
     <span class="bit">
       <p class="bit-number">2</p>
-      <p class="bit-value" id="value2"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value2">
     </span>
     <span class="bit">
       <p class="bit-number">3</p>
-      <p class="bit-value" id="value3"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value3">
     </span>
-    <span class="bit">
+    <span class="bit parity">
       <p class="bit-number">4</p>
       <p class="bit-value" id="value4"></p>
     </span>
     <span class="bit">
       <p class="bit-number">5</p>
-      <p class="bit-value" id="value5"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value5">
     </span>
     <span class="bit">
       <p class="bit-number">6</p>
-      <p class="bit-value" id="value6"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value6">
     </span>
     <span class="bit">
       <p class="bit-number">7</p>
-      <p class="bit-value" id="value7"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value7">
     </span>
-    <span class="bit">
+    <span class="bit parity">
       <p class="bit-number">8</p>
       <p class="bit-value" id="value8"></p>
     </span>
     <span class="bit">
       <p class="bit-number">9</p>
-      <p class="bit-value" id="value9"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value9">
     </span>
     <span class="bit">
       <p class="bit-number">10</p>
-      <p class="bit-value" id="value10"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value10">
     </span>
     <span class="bit">
       <p class="bit-number">11</p>
-      <p class="bit-value" id="value11"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value11">
     </span>
     <span class="bit">
       <p class="bit-number">12</p>
-      <p class="bit-value" id="value12"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value12">
     </span>
     <span class="bit">
       <p class="bit-number">13</p>
-      <p class="bit-value" id="value13"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value13">
     </span>
     <span class="bit">
       <p class="bit-number">14</p>
-      <p class="bit-value" id="value14"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value14">
     </span>
     <span class="bit">
       <p class="bit-number">15</p>
-      <p class="bit-value" id="value15"></p>
+      <input pattern="[0-1]{1}" autocomplete="off" maxlength="1" class="bit-value" id="value15">
     </span>
+  </div>
+  <p>
+    The actual data bits:
+    <span id="databits"></span>
+  </p>
+  <p>
+    The parity bits:
+    <span id="paritybits"></span>
+  </p>
+  <br>
 </div>
+<button class="generate-button">
+  <label>Generate!</label>
+</button>
+<div class="buttons">
+  <button>
+    <mat-icon>restart_alt</mat-icon>
+  </button>
+  <button>
+    <label>Check</label>
+  </button>
+
+</div>
+
+<p class="footnote">
+  Made by Kavish by the help of <a href="https://www.youtube.com/watch?v=X8jsijhllIA">this amazing video</a> by 3Blue1Brown.
+</p>
