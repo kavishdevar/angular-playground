@@ -14,8 +14,10 @@ h1 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+
     a {
         color: #ffffff;
+
         &:visited {
             color: #ffffff;
         }
@@ -26,6 +28,7 @@ h1 {
     display: flex;
     justify-content: center;
 }
+
 .bits-grid {
     background-color: rgb(50 50 50);
     display: grid;
@@ -49,12 +52,15 @@ h1 {
     transition: background-color 0.3s, border-radius 0.3s, transform 0.3s;
     position: relative;
 
-    p{
+    p {
         font-size: 24px;
         text-align: center;
         margin-top: 10px;
         position: absolute;
-    };
+    }
+
+    ;
+
     input {
         height: 62px;
         width: 62px;
@@ -65,9 +71,15 @@ h1 {
         font-family: Roboto, "Helvetica Neue", sans-serif;
         font-size: 24px;
         text-align: center;
+
         &:focus {
             outline: none;
         }
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
     }
     .bit-number {
         font-size: 16px;
@@ -89,6 +101,10 @@ h1 {
     color: rgb(26 26 26);
     border: 1px solid black;
     border-radius: 6px;
+
+    input {
+        color: rgb(26 26 26);
+    }
 }
 
 button {
@@ -123,6 +139,7 @@ button {
     margin-inline-start: 8px;
     vertical-align: middle;
 }
+
 .button-icon {
     display: inline-block;
     vertical-align: middle;
@@ -137,6 +154,16 @@ button {
     width: 100%;
 }
 
+.result {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 :host {
     color: #ffffff;
+    display: block;
+    margin: auto;
+    max-width: 800px;
 }
